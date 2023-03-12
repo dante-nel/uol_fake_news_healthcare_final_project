@@ -2,22 +2,24 @@ import math
 import timeit
 import matplotlib.pyplot as plt
 
-def get_predictions_and_times(model,test_dataset):
+
+def get_predictions_and_times(model, test_dataset):
     """
     Returns an array with the first element being the predicted y values and the second element being the time taken per prediction.
     """
-    timer_start=timeit.default_timer()
+    timer_start = timeit.default_timer()
     y_pred = model.predict(test_dataset)
-    timer_end=timeit.default_timer()
+    timer_end = timeit.default_timer()
 
     # check if predictions need to have first element unpacked (for instance, when BERT is being used to make predictions)
-    if len(y_pred)==1:
+    if len(y_pred) == 1:
         num_predictions = len(y_pred[0])
-    else: 
+    else:
         num_predictions = len(y_pred)
-        
+
     time_per_prediction = (timer_end-timer_start)/num_predictions
     return y_pred, time_per_prediction
+
 
 def round_to_seconds(x):
     """
@@ -33,9 +35,9 @@ def round_to_seconds(x):
         else:
             sigfigs = round(x * (10 ** (2 - exp)))
             return "{:.3f}e-{:02d}".format(sigfigs / 1000, -exp)
-        
 
-def print_accuracy_f1_time(accuracy_score,f1_score,time_per_prediction):
+
+def print_accuracy_f1_time(accuracy_score, f1_score, time_per_prediction):
     """
     Prints the accuracy score, f1 score and time per prediction.
     """
@@ -44,33 +46,35 @@ def print_accuracy_f1_time(accuracy_score,f1_score,time_per_prediction):
     print(f"F1 score: {f1_score:.2f}")
     print(f"Time per prediction: {round_to_seconds(time_per_prediction)} seconds")
 
+
 def print_html_table(accuracy_NB_tfidf, bert_accuracy, accuracy_nn, f1_NB_tfidf, bert_f1_score, f1_nn, time_per_prediction_NB, time_per_prediction_BERT, time_per_prediction_NN):
     """
     Prints an html table comparing accuracy scores, f1 scores and the time taken per prediction for the respective classification models.
     """
 
-    html_table= """
+    html_table = """
     ||  Naive Bayes Classifier | BERT Classifier| LSTM Neural Network|
     |----------|----------|----------|----------|
     Accuracy| {}  | {}  |{}|
     F1 Score| {}  | {}  |{}|
     Time per prediction| {} seconds | {} seconds |{} seconds|
     
-    """.format(round(accuracy_NB_tfidf , 2), 
-            round(bert_accuracy, 2), 
-            round(accuracy_nn, 2) ,
-            round(f1_NB_tfidf, 2), 
-            round( bert_f1_score, 2),
-            round(f1_nn, 2),
-            round_to_seconds(time_per_prediction_NB),
-            round_to_seconds(time_per_prediction_BERT),
-            round_to_seconds(time_per_prediction_NN)
-            )
+    """.format(round(accuracy_NB_tfidf, 2),
+               round(bert_accuracy, 2),
+               round(accuracy_nn, 2),
+               round(f1_NB_tfidf, 2),
+               round(bert_f1_score, 2),
+               round(f1_nn, 2),
+               round_to_seconds(time_per_prediction_NB),
+               round_to_seconds(time_per_prediction_BERT),
+               round_to_seconds(time_per_prediction_NN)
+               )
 
     # print the HTML table
     return html_table
 
-def plot_accuracy_loss(model_history,model_title):
+
+def plot_accuracy_loss(model_history, model_title):
     """
     Returns two line plots, the first showing Training and Validation Accuracy, while the second shows Training and Validation Loss.
     """
