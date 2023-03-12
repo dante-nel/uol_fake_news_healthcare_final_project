@@ -3,7 +3,9 @@ import timeit
 import matplotlib.pyplot as plt
 
 def get_predictions_and_times(model,test_dataset):
-    """Returns an array with the first element being the predicted y values and the second element being the time taken per prediction."""
+    """
+    Returns an array with the first element being the predicted y values and the second element being the time taken per prediction.
+    """
     timer_start=timeit.default_timer()
     y_pred = model.predict(test_dataset)
     timer_end=timeit.default_timer()
