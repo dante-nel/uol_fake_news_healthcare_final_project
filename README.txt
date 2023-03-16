@@ -12,7 +12,7 @@ The data for the project has been included in the folder `data` but data/PUBHEAL
 ===========================================================
 How to use this project:
 1. Download the project folder
-2. Open the Jupyter Notebook Fake_News_Classification_in_Healthcare_March23.ipynb using either Jupyter, Google Colab or VS Code's Jupyter extension.
+2. Open the Jupyter Notebook Fake_News_Classification_in_Healthcare_March2023.ipynb using either Jupyter, Google Colab or VS Code's Jupyter extension.
 3. Ensure the full dataset has been included in the folder data (see the caveat on data above).
 4. Ensure dependencies are installed on your machine. The most challenging of these are tensorflow and keras. It is recommended to activate a virtual environment using either pip3 or anaconda. If you're using a Apple M1 Macbook then use miniforge, following the user guide in this link: https://makeoptim.com/en/deep-learning/tensorflow-metal
 5. Run the cells within the Jupyter Notebook.
