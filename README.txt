@@ -1,6 +1,3 @@
-This repository is for purposes of hosting the code for the University of London 
-BSc Computer Science (Data Science) Final Project. 
-
 ===========================================================
 Contents of the repository:
 
